@@ -1,0 +1,506 @@
+{
+  "profile": {
+    "name": "Md. Roton Ahmed",
+    "role": "AI Researcher & Backend Developer",
+    "headline": "Building AI for people, from research to reality.",
+    "summary": "I work at the intersection of AI research and backend engineering—building accessible Bengali interfaces, multimodal data pipelines and machine learning systems with real-world purpose.",
+    "about": "I am a CSE graduate from Pabna University of Science and Technology, with my final result currently pending. I want to use AI, natural language processing and deep learning to solve problems that matter to people.\n\nMy work connects research with implementation: collecting handwriting signals, studying bilingual biometrics, designing webcam-based Bengali eye typing and serving ML models through usable APIs. I have contributed to nine published international conference papers, including one as first author.\n\nI enjoy the whole process—from framing a question and collecting data to evaluating a model and building the software around it. I am looking for opportunities where careful research and practical engineering can create social impact.",
+    "location": "Pabna, Bangladesh",
+    "email": "rkroton43@gmail.com",
+    "availability": "Interested in AI/ML engineering opportunities and research collaborations.",
+    "github": "https://github.com/roton43",
+    "scholar": "https://scholar.google.com/citations?user=jxq8PjQAAAAJ",
+    "orcid": "https://orcid.org/0009-0003-6466-7402",
+    "linkedin": "https://linkedin.com/in/md-roton-ahmed-6bb396216",
+    "education": "B.Sc. in Computer Science and Engineering",
+    "institution": "Pabna University of Science and Technology (PUST)",
+    "education_dates": "May 2022 – August 2026",
+    "education_status": "Academic work completed; final result pending as of September 2026.",
+    "problem_solving": "700+ programming problems solved and 50+ rated contests, with participation in ICPC regionals and inter-university programming contests.",
+    "skills": "AI & ML: scikit-learn, PyTorch, PyCaret, OpenCV, feature engineering, model evaluation\nBackend & deployment: FastAPI, Flask, Pydantic, Docker, Uvicorn, Git, GitHub\nData & scientific computing: Python, NumPy, Pandas, Matplotlib, Seaborn\nDatabases: PostgreSQL, MySQL, SQL Server, SQLite\nInterfaces & applications: HTML, CSS, JavaScript, Streamlit, Gradio, Tkinter, Qt\nFoundations: C, C++, Java, data structures, algorithms, Linux, LaTeX",
+    "thesis": "Kinematic–Visual Fusion for Bilingual Handwriting Analysis: Closed-Set Writer Identification and Participant-Level Demographic Inference"
+  },
+  "records": [
+    {
+      "kind": "project",
+      "slug": "netrolekha",
+      "published": true,
+      "position": 0,
+      "data": {
+        "title": "NetroLekha: Bengali eye typing",
+        "category": "Research",
+        "role": "System design, implementation and user-study analysis",
+        "summary": "A webcam-based gaze-typing system exploring a lower-cost route to Bengali text entry with speech feedback.",
+        "problem": "Dedicated infrared eye trackers can create a hardware-access barrier. NetroLekha explores webcam-only Bengali communication for people with severe motor impairment.",
+        "approach": "Built a browser-based gaze interface using WebGazer.js, a five-zone hierarchical dwell-time keyboard and a phonetic Roman-to-Bangla transliteration engine. Added an audio-feedback pipeline with offline-first neural speech and fallback options.\n\nCollected and analyzed a 41-participant, 410-trial corpus to study word completion and navigation errors.",
+        "outcome": "The CV-reported study recorded 41.7% word-completion accuracy and 33.4% character error rate. Zone-level navigation emerged as the dominant error source (r = 0.62). These findings identify a design limitation rather than establish clinical effectiveness.\n\nA companion Data in Brief data article is submitted; the system manuscript is in preparation for journal submission.",
+        "tags": "Accessible HCI, Bengali, WebGazer.js, JavaScript, User study",
+        "github": "https://github.com/roton43/GazeTypeBD",
+        "demo": "",
+        "featured": true
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "bilingual-handwriting",
+      "published": true,
+      "position": 1,
+      "data": {
+        "title": "Bilingual handwriting research pipeline",
+        "category": "Research",
+        "role": "Funded research assistant; proposal, acquisition software and analysis pipeline",
+        "summary": "A custom Wacom acquisition system and reproducible pipeline for Bengali–English handwriting research.",
+        "problem": "Handwriting research needs synchronized signals, consistent prompts and traceable sample exports. The project supports both online pen dynamics and offline handwriting images.",
+        "approach": "Designed a Linux data-collection application using Python, Tkinter, Cairo, GTK and evdev for a Wacom Cintiq 22. Captured coordinates, pressure, tilt, hover distance and stroke timing at approximately 150 Hz.\n\nImplemented aligned CSV/image exports, normalized ink images and 90+ kinematic and temporal features in the public collection repository. The thesis studies kinematic–visual fusion for writer identification and participant-level demographic inference.",
+        "outcome": "Won competitive university research funding of BDT 24,000. Produced a reusable data-acquisition and preprocessing codebase. The thesis manuscript is in preparation for journal submission; no unpublished performance claims are presented here.",
+        "tags": "Multimodal learning, Python, Tkinter, Wacom, Feature engineering",
+        "github": "https://github.com/roton43/Handwriting-Data-Collector",
+        "demo": "",
+        "featured": true
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "mri-classifier",
+      "published": true,
+      "position": 2,
+      "data": {
+        "title": "Vision Transformer MRI classifier",
+        "category": "Engineering",
+        "role": "Model fine-tuning and API/UI implementation",
+        "summary": "A four-class MRI image classifier with a FastAPI inference service and Streamlit interface.",
+        "problem": "Model experiments need an interface and a repeatable serving path to make inference inspectable beyond a training notebook.",
+        "approach": "Fine-tuned a ViT image classifier for glioma, meningioma, no-tumor and pituitary classes. Built a FastAPI service that loads local model artifacts once and exposes health and prediction endpoints. A Streamlit client provides image upload, preview and confidence display.",
+        "outcome": "A complete local inference workflow with backend health checks, configurable API URL and documented artifact preparation. This is an educational research prototype; it does not establish clinical diagnostic validity.",
+        "tags": "PyTorch, Vision Transformer, FastAPI, Streamlit",
+        "github": "https://github.com/roton43/brain-tumor-classifier",
+        "demo": "",
+        "featured": true
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "sentiment-inference-api",
+      "published": true,
+      "position": 3,
+      "data": {
+        "title": "Text-classification inference API",
+        "category": "Engineering",
+        "role": "Model pipeline packaging and REST API development",
+        "summary": "A FastAPI service wrapping a scikit-learn TF-IDF and Naive Bayes text-classification pipeline.",
+        "problem": "Text preprocessing and model inference need to behave consistently when a model moves from a notebook into a backend service.",
+        "approach": "Packaged vectorization and classification in a scikit-learn pipeline and serialized the artifact for reuse. Built health and prediction endpoints, returning a label and confidence through a REST interface.",
+        "outcome": "A documented model-serving example that connects a reusable scikit-learn pipeline to a FastAPI interface. The emphasis is on consistent preprocessing, validation and an inspectable prediction response.",
+        "tags": "FastAPI, scikit-learn, TF-IDF, REST API",
+        "github": "https://github.com/roton43/inference-api-with-fastapi",
+        "demo": "",
+        "featured": true
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "house-price-prediction",
+      "published": true,
+      "position": 4,
+      "data": {
+        "title": "House price prediction system",
+        "category": "Engineering",
+        "role": "Data preparation, model comparison and application development",
+        "summary": "An end-to-end regression project comparing seven models and exposing the selected model through Gradio.",
+        "problem": "A tabular prediction project needs consistent cleaning, feature handling and model selection before a usable interface.",
+        "approach": "Prepared data, handled missing values and feature scaling, engineered features and compared seven regression models using GridSearchCV. Serialized the selected model and built an interactive Gradio application.",
+        "outcome": "A reproducible training-to-interface workflow with publicly available source code. Performance claims depend on the evaluation protocol and are not inferred from the deployment interface.",
+        "tags": "scikit-learn, GridSearchCV, Gradio, Regression",
+        "github": "https://github.com/roton43/House_Price_Prediction",
+        "demo": "",
+        "featured": false
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "customer-segmentation",
+      "published": true,
+      "position": 5,
+      "data": {
+        "title": "Customer segmentation dashboard",
+        "category": "Engineering",
+        "role": "Preprocessing, clustering and dashboard development",
+        "summary": "An interactive K-Means dashboard with cluster profiling, elbow analysis and CSV export.",
+        "problem": "Clustering output is more useful when people can inspect the features, cluster sizes and profiles behind each assignment.",
+        "approach": "Implemented standardized customer features, an adjustable K-Means workflow and elbow-method analysis. Built a Streamlit dashboard with centroid visualization, segment summaries and downloadable cluster assignments.",
+        "outcome": "An interactive Streamlit tool for exploring customer segments, checking cluster profiles and exporting assignments for further analysis.",
+        "tags": "K-Means, scikit-learn, Streamlit, Data visualization",
+        "github": "https://github.com/roton43/mall-customer-segmentation",
+        "demo": "",
+        "featured": false
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "fake-news-classifier",
+      "published": true,
+      "position": 6,
+      "data": {
+        "title": "Fake news classification pipeline",
+        "category": "Engineering",
+        "role": "NLP preprocessing, model comparison and Gradio interface",
+        "summary": "A text-classification project connecting exploratory analysis, TF-IDF features and an interactive prediction interface.",
+        "problem": "News classification experiments need transparent preprocessing and evaluation before their predictions can be interpreted.",
+        "approach": "Explored the text dataset, normalized text and used TF-IDF representations. Compared Naive Bayes and Logistic Regression, serialized the selected model and built a Gradio interface.",
+        "outcome": "A public NLP pipeline with training notebooks and an inference application. Dataset performance does not establish that the system can reliably judge new real-world claims.",
+        "tags": "NLP, TF-IDF, Logistic Regression, Gradio",
+        "github": "https://github.com/roton43/fake-news-classifier",
+        "demo": "",
+        "featured": false
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "stock-forecasting",
+      "published": true,
+      "position": 7,
+      "data": {
+        "title": "Stock analysis & forecasting dashboard",
+        "category": "Engineering",
+        "role": "Time-series preparation and interactive dashboard development",
+        "summary": "A Streamlit dashboard for historical market data, technical indicators and Prophet forecasts.",
+        "problem": "Time-series patterns are easier to inspect when historical context, uncertainty and indicators are visible together.",
+        "approach": "Built candlestick charts and RSI, MACD and Bollinger Band features using yfinance and Plotly. Integrated Prophet forecasts, confidence intervals and CSV downloads.",
+        "outcome": "A documented interactive forecasting project. Its forecasts are exploratory model outputs, with no claim of reliable investment returns.",
+        "tags": "Prophet, Streamlit, Plotly, Time series",
+        "github": "https://github.com/roton43/stock-price-forecasting",
+        "demo": "",
+        "featured": false
+      }
+    },
+    {
+      "kind": "project",
+      "slug": "irrigation-robot",
+      "published": true,
+      "position": 8,
+      "data": {
+        "title": "Autonomous irrigation robot",
+        "category": "Research",
+        "role": "Co-proposal and collaborative design / implementation",
+        "summary": "A grant-supported line-following robot combining plant irrigation, obstacle sensing and soil-moisture feedback.",
+        "problem": "Automating repeated watering along a predefined route requires coordinating navigation, sensing and actuation.",
+        "approach": "Co-proposed and helped build a microcontroller-based robot combining IR line detection, ultrasonic obstacle sensing and moisture-triggered watering.",
+        "outcome": "Co-recipient of a BDT 22,500 university Innovative Project Grant. The work led to a published QPAIN 2025 IEEE conference paper with a verified DOI.",
+        "tags": "Embedded systems, Robotics, Sensors, Irrigation",
+        "github": "",
+        "demo": "",
+        "featured": false
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "cross-lingual-font-recognition",
+      "published": true,
+      "position": 9,
+      "data": {
+        "title": "Cross-Lingual Font Recognition with Partial Unfreezing and Cosine Scheduling in Vision Transformers (ViT-B/16)",
+        "authors": "Md. Roton Ahmed, Abdullah Al-Mamun, Md. Abdur Rahim, Abu Saleh Musa Miah",
+        "venue": "PECCII 2026 · IEEE",
+        "year": 2026,
+        "status": "Published",
+        "first_author": true,
+        "doi": "10.1109/PECCII70991.2026.11661902",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "intelligent-plant-irrigation",
+      "published": true,
+      "position": 10,
+      "data": {
+        "title": "Development of an Automated Line-Following Robot for Intelligent Plant Irrigation",
+        "authors": "Abu Mohammad Noor, Md. Roton Ahmed, Nitun Kumar Podder",
+        "venue": "QPAIN 2025 · IEEE",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1109/QPAIN66474.2025.11171837",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "genetic-syndrome-classification",
+      "published": true,
+      "position": 11,
+      "data": {
+        "title": "Deep Learning-Based Classification of Genetic Syndromes: A Comparative Study on Apert and Down Syndrome Detection",
+        "authors": "Md. Asif Rahman, Md. Roton Ahmed, Md. Abu Johab, Md. Abdul Momin Sheikh, Nakib Aman",
+        "venue": "RAAICON 2025 · IEEE",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1109/RAAICON69033.2025.11502155",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "bangladeshi-dialect-classification",
+      "published": true,
+      "position": 12,
+      "data": {
+        "title": "Hybrid BiLSTM-BiGRU Model for Classification of Bangladeshi Dialects",
+        "authors": "Md. Tahidul Islam, Md. Abu Johab, Md. Roton Ahmed, Nakib Aman",
+        "venue": "ICDSAIA 2025 · Springer CCIS 2682",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1007/978-3-032-11352-8_1",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "road-accident-determinants",
+      "published": true,
+      "position": 13,
+      "data": {
+        "title": "The Key Determinants of Road Accidents: A Machine Learning Analysis",
+        "authors": "Md. Tahidul Islam, Md. Abu Johab, Md. Roton Ahmed, Md. Nayem Hossain, Nakib Aman",
+        "venue": "ICDSAIA 2025 · Springer CCIS 2683",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1007/978-3-032-11355-9_33",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "bangla-bert-register-classification",
+      "published": true,
+      "position": 14,
+      "data": {
+        "title": "Distinguishing Between Saint(Sadhu) and Common(Cholit): A Bangla BERT Approach to Bengali Language Classification",
+        "authors": "MD. Tahidul Islam, Nakib Aman, Md. Abu Johab, Md. Sadikul Islam, Md. Roton Ahmed",
+        "venue": "ICCIT 2025 · IEEE",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1109/ICCIT68739.2025.11490255",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "interpretable-bone-fracture-detection",
+      "published": true,
+      "position": 15,
+      "data": {
+        "title": "Clinically Interpretable Bone Fracture Detection Using EfficientNet-B0 and XAI: A Deep Learning Approach for Radiographic Image Analysis",
+        "authors": "Md. Abu Johab, Al Arian Ahmad, MD.Tahidul Islam, Md. Roton Ahmed, Nakib Aman",
+        "venue": "COMPAS 2025 · IEEE",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1109/COMPAS67506.2025.11381823",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "eeg-depression-detection",
+      "published": true,
+      "position": 16,
+      "data": {
+        "title": "EEG-Based Depression Detection Using CNNs and Heatmaps",
+        "authors": "Md. Refat Sadiq, Md. Tahidul Islam, Most. Nur-A Marjan Esha, MD. Mahmudul Hasan, Md. Abu Johab, Md. Roton Ahmed",
+        "venue": "ICDSAIA 2025 · Springer CCIS 2681",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1007/978-3-032-11335-1_18",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "handwriting-adhd-detection",
+      "published": true,
+      "position": 17,
+      "data": {
+        "title": "A Novel Approach to ADHD Detection in Children with ASD via Handwriting-Based Machine Learning Models",
+        "authors": "MD. Tahidul Islam, Md. Abu Johab, Md. Roton Ahmed, Nakib Aman, Al Arian Ahmad",
+        "venue": "QPAIN 2025 · IEEE",
+        "year": 2025,
+        "status": "Published",
+        "first_author": false,
+        "doi": "10.1109/QPAIN66474.2025.11171830",
+        "url": "",
+        "summary": ""
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "kinematic-visual-fusion",
+      "published": true,
+      "position": 18,
+      "data": {
+        "title": "Kinematic–Visual Fusion for Bilingual Handwriting Analysis: Closed-Set Writer Identification and Participant-Level Demographic Inference",
+        "authors": "Md. Roton Ahmed, M. A. Rahim, A. S. M. Miah, M. R. Zaman, R. Mian, J. Shin",
+        "venue": "Journal manuscript · target venue to be confirmed",
+        "year": 2026,
+        "status": "In preparation",
+        "first_author": true,
+        "doi": "",
+        "url": "",
+        "summary": "First-author thesis manuscript. Journal submission is planned; this entry is not a published or accepted article."
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "netrolekha-system-paper",
+      "published": true,
+      "position": 19,
+      "data": {
+        "title": "NetroLekha: A Low-Cost, Webcam-Based Hierarchical Dwell-Time Eye-Typing System for Phonetic Bangla Text Entry — System Architecture, a Reusable Behavioral Data Pipeline, and a 41-Participant Corpus Study",
+        "authors": "Md. Roton Ahmed",
+        "venue": "Journal manuscript · target venue to be confirmed",
+        "year": 2026,
+        "status": "In preparation",
+        "first_author": true,
+        "doi": "",
+        "url": "",
+        "summary": "First-author system manuscript; journal submission is planned."
+      }
+    },
+    {
+      "kind": "publication",
+      "slug": "netrolekha-data-descriptor",
+      "published": true,
+      "position": 20,
+      "data": {
+        "title": "NetroLekha 41-participant gaze-typing corpus — data descriptor",
+        "authors": "Md. Roton Ahmed",
+        "venue": "Data in Brief · Elsevier",
+        "year": 2026,
+        "status": "Submitted",
+        "first_author": true,
+        "doi": "",
+        "url": "",
+        "summary": "First-author data article submitted to Data in Brief. Not yet accepted or published."
+      }
+    },
+    {
+      "kind": "experience",
+      "slug": "handwriting-ra",
+      "published": true,
+      "position": 21,
+      "data": {
+        "title": "Research Assistant · Handwriting biometrics",
+        "organization": "Department of CSE, PUST",
+        "dates": "November 2025 – May 2026",
+        "summary": "Competitively funded, paid research role. Conceived and proposed a bilingual handwriting study, built custom Wacom acquisition software and developed a reproducible collection and feature-extraction pipeline."
+      }
+    },
+    {
+      "kind": "experience",
+      "slug": "gaze-typing-ra",
+      "published": true,
+      "position": 22,
+      "data": {
+        "title": "Research Assistant · Bengali gaze typing",
+        "organization": "Funded research project",
+        "dates": "June 2026 – Present",
+        "summary": "Designed and built a webcam-based Bengali eye-typing system, phonetic transliteration and speech feedback. Collected and analyzed a 41-participant, 410-trial corpus to investigate interface limitations."
+      }
+    },
+    {
+      "kind": "experience",
+      "slug": "peer-reviewer",
+      "published": true,
+      "position": 23,
+      "data": {
+        "title": "Peer reviewer",
+        "organization": "Elsevier · Data in Brief",
+        "dates": "2025 – Present",
+        "summary": "Completed six manuscript reviews involving data-driven research and scientific datasets."
+      }
+    },
+    {
+      "kind": "experience",
+      "slug": "nhspc-technical-lead",
+      "published": true,
+      "position": 24,
+      "data": {
+        "title": "Technical Lead · NHSPC venue",
+        "organization": "National High School Programming Contest · PUST",
+        "dates": "2026",
+        "summary": "Coordinated technical readiness and execution for the venue organizing team."
+      }
+    },
+    {
+      "kind": "experience",
+      "slug": "peccii-volunteer",
+      "published": true,
+      "position": 25,
+      "data": {
+        "title": "Organizing committee volunteer",
+        "organization": "PECCII 2026 · IEEE · PUST",
+        "dates": "June 2026",
+        "summary": "Supported the organizing committee of the international conference."
+      }
+    },
+    {
+      "kind": "award",
+      "slug": "rttc-grant",
+      "published": true,
+      "position": 26,
+      "data": {
+        "title": "PUST Research & Technology Transfer Cell Grant",
+        "year": 2025,
+        "summary": "BDT 24,000. Competitively awarded on a self-authored research proposal for bilingual handwriting biometrics."
+      }
+    },
+    {
+      "kind": "award",
+      "slug": "innovative-project-grant",
+      "published": true,
+      "position": 27,
+      "data": {
+        "title": "PUST Innovative Project Grant",
+        "year": 2023,
+        "summary": "BDT 22,500. Co-recipient for the autonomous line-following irrigation robot."
+      }
+    },
+    {
+      "kind": "award",
+      "slug": "aiquest-certificate",
+      "published": true,
+      "position": 28,
+      "data": {
+        "title": "Full Stack Data Science, ML & AI with Python",
+        "year": 2026,
+        "summary": "50-hour course, aiQuest Intelligence. Certificate ID f810e8f; issued 22 June 2026."
+      }
+    },
+    {
+      "kind": "post",
+      "slug": "a-model-needs-a-system",
+      "published": false,
+      "position": 29,
+      "data": {
+        "title": "A model needs a system around it",
+        "summary": "A draft outline for a first technical note on moving from a trained model to a usable inference service.",
+        "tags": "Engineering, FastAPI, ML systems",
+        "date": "2026-09-30",
+        "body": "## Draft: replace this outline with your own article\n\nThis sample is a **private draft**. Add your own examples before publishing.\n\n## The model is one part\n\nAn inference service also needs consistent preprocessing, validation, health checks and a usable interface.\n\n## A small FastAPI example\n\n```python\nfrom fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/health\")\ndef health():\n    return {\"status\": \"ok\"}\n```\n\n## What to add next\n\n- Explain a real decision from your project.\n- Link to your repository.\n- Describe evaluation limitations.\n- Include reproducible setup steps.\n\nবাংলা ও English—দুই ভাষাতেই লেখা যাবে।"
+      }
+    }
+  ]
+}

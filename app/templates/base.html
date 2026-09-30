@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ title }}</title><meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <meta property="og:title" content="{{ title }}"><meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="{% if item is defined and active.startswith('/blog/') %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ canonical }}"><meta name="twitter:card" content="summary">
+  {% if active.startswith('/admin') %}<meta name="robots" content="noindex,nofollow"><meta name="csrf-token" content="{{ csrf }}">{% endif %}
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css"><script src="/static/site.js" defer></script>
+  <link rel="alternate" type="application/rss+xml" title="Field notes" href="/feed.xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="brand" href="/" aria-label="{{ person.name }} home"><span class="brand-mark">ra<span>.</span></span><span class="brand-name">{{ person.name }}</span></a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+  <nav id="main-nav" aria-label="Main navigation">
+    {% for href,label in [('/work','Work'),('/research','Research'),('/blog','Writing'),('/about','About')] %}<a href="{{ href }}" {% if active.startswith(href) %}aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
+    <a class="nav-contact" href="mailto:{{ person.email }}">Let’s talk</a>
+  </nav>
+</div></header>
+<main id="main">{% block content %}{% endblock %}</main>
+<footer class="site-footer"><div class="container footer-top"><div><span class="eyebrow">Have a useful problem in mind?</span><h2>Let’s build something<br>that matters.</h2><a class="email-link" href="mailto:{{ person.email }}">{{ person.email }}</a></div><div class="footer-links">
+  {% for key,label in [('github','GitHub'),('scholar','Google Scholar'),('orcid','ORCID'),('linkedin','LinkedIn')] %}{% if person[key] %}<a href="{{ person[key] }}" target="_blank" rel="noopener noreferrer">{{ label }}</a>{% endif %}{% endfor %}
+  <a href="/cv">View CV</a><a href="/feed.xml">RSS feed</a>
+</div></div><div class="container footer-bottom"><span>© {{ year }} {{ person.name }} · {{ person.location }}</span><span>Research with purpose. Systems that work.</span></div></footer>
+</body></html>

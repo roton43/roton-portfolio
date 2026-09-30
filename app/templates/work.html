@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% from 'macros.html' import project_card %}{% block content %}
+<section class="container page-heading"><span class="eyebrow">Selected work</span><h1>Research meets<br>implementation.</h1><p>Accessible technology, data pipelines and applied ML systems—built from the problem outward.</p></section>
+<section class="container section page-body"><nav class="filters" aria-label="Project category">{% for c in ['All','Research','Engineering'] %}<a href="/work?category={{ c }}" class="{% if category == c %}selected{% endif %}" {% if category == c %}aria-current="true"{% endif %}>{{ c }}</a>{% endfor %}</nav><div class="project-grid">{% for p in projects %}{{ project_card(p, '%02d' % loop.index) }}{% else %}<p>No projects in this category yet.</p>{% endfor %}</div></section>
+{% endblock %}

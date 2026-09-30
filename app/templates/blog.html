@@ -1,0 +1,4 @@
+{% extends 'base.html' %}{% from 'macros.html' import post_card %}{% block content %}
+<section class="container page-heading"><span class="eyebrow">Field notes</span><h1>Thinking in public.<br>Building in practice.</h1><p>Notes on research, AI systems and the small decisions that make software useful.</p><a class="text-link" href="/feed.xml">Follow via RSS</a></section>
+<section class="container section page-body">{% if posts %}<div class="post-grid">{% for p in posts %}{{ post_card(p) }}{% endfor %}</div>{% else %}<div class="empty-writing"><span class="eyebrow">The notebook is open</span><h2>First notes coming soon.</h2><p>In the meantime, explore the projects and publications behind the work.</p><a class="button secondary" href="/work">Explore selected work</a></div>{% endif %}</section>
+{% endblock %}

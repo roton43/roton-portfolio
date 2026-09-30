@@ -2,6 +2,7 @@ services:
   - type: web
     name: roton-portfolio
     runtime: docker
+    region: singapore
     plan: free
     healthCheckPath: /health
     envVars:
@@ -16,6 +17,12 @@ services:
       - key: DATABASE_URL
         sync: false
       - key: SITE_URL
-        sync: false
+        fromService:
+          name: roton-portfolio
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
       - key: ALLOWED_HOSTS
-        sync: false
+        fromService:
+          name: roton-portfolio
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME

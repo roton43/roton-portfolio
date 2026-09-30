@@ -5,7 +5,6 @@ import os
 import secrets
 import time
 from collections import OrderedDict
-from fastapi import HTTPException
 
 
 def hash_password(password):
@@ -43,6 +42,7 @@ def csrf_token(request):
 
 
 def check_csrf(request, token):
+    from fastapi import HTTPException
     expected = request.session.get('csrf', '')
     if not expected or not hmac.compare_digest(str(token), expected):
         raise HTTPException(403, 'The form expired. Reload the page and try again.')

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: roton-portfolio
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: roton
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SITE_URL
+        sync: false
+      - key: ALLOWED_HOSTS
+        sync: false

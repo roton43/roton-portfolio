@@ -1,6 +1,6 @@
 # Verification and practical limits
 
-Checked on 30 September 2026 using Python 3.12 and the package versions in `requirements.txt`. This records what was actually checked, rather than implying external hosting was exercised.
+Checked on 30 September 2026 using Python 3.12 and the package versions in `requirements.txt`. Both local application checks and the live Render/Neon deployment were exercised.
 
 ## Automated application tests
 
@@ -35,16 +35,23 @@ Screenshots in `docs/preview/` show the home page, mobile home page, content stu
 
 JavaScript syntax check, Python compilation and `pip check` passed.
 
-## Not executed here
+## Live deployment checks
 
-- Docker is unavailable in the execution environment, so `docker build` / `docker compose up` were not run. Dockerfile and Compose configuration were reviewed; owner-side build steps are in the guide.
-- A live PostgreSQL / Neon connection was not available. Functional tests use a temporary SQLite database; production PostgreSQL configuration and connection-string handling are included and checked, but a live database smoke test is still required during deployment.
-- No GitHub repository was created or pushed, and no Render/Neon resources were created in the owner's accounts.
+- Public source is in https://github.com/roton43/roton-portfolio; Render deploys the `main` branch automatically.
+- https://roton-portfolio.onrender.com/ runs the Dockerfile on a Render Free web service in Singapore, connected to Neon Free PostgreSQL in Singapore. The Docker build, startup and health checks succeeded on Render.
+- Eleven HTTPS routes returned 200: `/health`, `/`, `/work`, `/research`, `/about`, `/blog`, `/cv`, `/admin/login`, `/robots.txt`, `/sitemap.xml` and `/feed.xml`. Health returned `{"status":"ok"}`.
+- Security response checks included `nosniff`, admin `no-store`/`noindex`, and sitemap links using the live hostname.
+- Live Neon contained nine projects, twelve publication records (nine published plus three manuscripts), five experience records, three awards and one private blog draft.
+- The owner's admin login succeeded. The live editor rendered a Bengali/English Markdown preview and saved a private draft.
+- A temporary marker saved in that draft remained visible in the editor and Neon after a Render redeploy completed. The authenticated session also remained usable. The original draft text was restored afterwards and the marker was confirmed absent; HTML form submission normalizes its line endings to CRLF.
+- The private draft detail returned 404 to an unauthenticated request and was absent from RSS and sitemap. The example remains unpublished.
+- Live public publishing/deletion and production backup restore were not exercised; those flows passed against the disposable local test database.
+
+## Practical limits
+
+- Local Docker/Compose executables are unavailable, so local `docker build` / `docker compose up` were not run. The production Docker image was built and deployed successfully by Render; the local Compose workflow remains owner-run.
 - No paid plans, domains or hosting purchases were made.
-
-## Deployment checks to perform
-
-Follow `DEPLOYMENT_BN.md`, including `/health`, admin login, save/publish and redeploy-persistence checks against Neon. Free hosting adds cold-start delays, quotas and availability limits. Do not present this release as a tested always-on hosted service.
+- Free hosting adds cold-start delays, quotas and availability limits; this is not an always-on uptime guarantee. See `DEPLOYMENT_BN.md` for ongoing maintenance and backups.
 
 ## Implementation notes
 

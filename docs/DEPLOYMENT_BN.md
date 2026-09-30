@@ -2,6 +2,16 @@
 
 এই guide FastAPI ও Docker application-টি public internet-এ চালানোর জন্য। যাচাইয়ের তারিখ: **৩০ সেপ্টেম্বর ২০২৬**। Free-plan rules পরে বদলাতে পারে; service তৈরির সময় dashboard-এ `Free` নির্বাচন করো এবং কোনো paid upgrade enable করবে না যদি zero-cost রাখতে চাও।
 
+## তোমার live setup
+
+- **Portfolio:** https://roton-portfolio.onrender.com/
+- **Admin:** https://roton-portfolio.onrender.com/admin/login
+- **Source:** https://github.com/roton43/roton-portfolio
+- **Hosting:** Render Free Docker + Neon Free PostgreSQL; দুটোই Singapore region।
+- **Login:** username `roton`, এবং hash তৈরি করার সময় নিজের বেছে নেওয়া original password। Login form-এ hash বা email password দেবে না।
+
+Deployment, health check, public pages, admin login, Markdown preview এবং private draft save যাচাই হয়েছে। Render redeploy-এর পর draft database-এ অক্ষত ছিল; draft public page-এ 404 এবং RSS/sitemap-এ অনুপস্থিত ছিল। পরীক্ষার temporary লেখা সরিয়ে original draft ফিরিয়ে দেওয়া হয়েছে। GitHub `main`-এর জন্য auto-deploy enabled আছে। নিচের ধাপগুলো local setup বা ভবিষ্যতে deployment পুনরায় করার reference।
+
 ## এই setup কেন
 
 | অংশ | Service | কাজ |
@@ -80,7 +90,7 @@ Render তৈরি করা actual URL নামের availability অনু�
 
 Manual Web Service তৈরির বদলে **New → Blueprint** থেকে একই repository connect করলে `render.yaml` পড়বে। শুধু `ADMIN_PASSWORD_HASH` ও `DATABASE_URL` নিজের values দিয়ে বসাবে। `SESSION_SECRET` Render generate করবে; `SITE_URL` ও `ALLOWED_HOSTS` একই service-এর actual Render URL ও hostname থেকে স্বয়ংক্রিয়ভাবে আসবে। Free plan, Singapore region, Docker runtime ও health path file-এ দেওয়া আছে। Neon database আলাদাভাবে তৈরি করবে।
 
-Public repository URL দিয়ে deploy করলে GitHub app access না বাড়িয়েও service তৈরি করা যায়। ওই ক্ষেত্রে code পরিবর্তনের পরে Dashboard থেকে manual deploy করবে। Blog ও content update-এর জন্য redeploy দরকার হয় না। Auto-deploy চাইলে পরে Render GitHub integration-এ এই repository-টি অনুমোদন করতে পারো।
+এই deployed service-এ **auto-deploy enabled** আছে: GitHub `main`-এ commit/push হলে Render নতুন deployment শুরু করবে। Push-এর পরে আলাদা manual deploy দেওয়ার দরকার নেই। অন্য service-এ auto-deploy বন্ধ থাকলে Dashboard থেকে manual deploy করবে। Blog ও content update-এর জন্য redeploy দরকার হয় না।
 
 ## ৫. Deploy যাচাই করো
 
@@ -118,6 +128,7 @@ Local SQLite-এ করা initial custom edits যদি Neon-এ নিতে 
 | Admin disabled locally | `.env`-এ generated password hash বসাও; server restart করো |
 | Production startup secret error | কমপক্ষে ৩২-character `SESSION_SECRET` বসাও |
 | Login form expired | Page reload করে আবার sign in করো |
+| Username/password ভুল | Username `roton`; hash তৈরির সময় বেছে নেওয়া original password দাও। Hash ও email credentials login form-এ দেবে না |
 | Too many login attempts | ১৫ মিনিট অপেক্ষা করো; limiter bypass করতে multiple workers চালাবে না |
 | HTML/blog preview unavailable | Session expired হলে নতুন করে sign in করো; লেখা copy করে রাখো |
 | Data restart-এ হারাচ্ছে | Local SQLite নয়, Neon PostgreSQL configure করা আছে কি না দেখো |
@@ -131,4 +142,4 @@ Local SQLite-এ করা initial custom edits যদি Neon-এ নিতে 
 - [Neon pricing](https://neon.com/pricing)
 - [Neon connection guide](https://neon.com/docs/connect/connect-from-any-app)
 
-Account setup-এর অগ্রগতি: GitHub repository এবং Neon Free PostgreSQL project তৈরি হয়েছে। Render Blueprint-এর secret fields পূরণ ও deploy verification শেষ না হওয়া পর্যন্ত live deployment সম্পন্ন হয়েছে বলে ধরে নেবে না। কোনো secret public chat-এ দিতে হবে না।
+Deployment সম্পন্ন এবং live যাচাই হয়েছে। Password, password hash ও database connection string private রাখবে; public chat বা GitHub-এ দেবে না।

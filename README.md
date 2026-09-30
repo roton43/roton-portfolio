@@ -61,7 +61,12 @@ For this single-container command, set `DATABASE_URL` to an external PostgreSQL 
 
 The deployment target is **Render Free Docker Web Service + Neon Free PostgreSQL**, not Render's expiring free database. Follow [DEPLOYMENT_BN.md](docs/DEPLOYMENT_BN.md).
 
-Free hosting has quotas and cold starts. This delivery contains deployable files and instructions; it does **not** claim a live public deployment was created in your accounts.
+**Live portfolio:** https://roton-portfolio.onrender.com/  
+**Content studio:** https://roton-portfolio.onrender.com/admin/login
+
+Deployed and verified on 30 September 2026 using Render Free Docker and Neon Free PostgreSQL in Singapore. Admin login, Markdown preview, saving a private draft and persistence across a Render redeploy passed. GitHub `main` commits trigger automatic deployment; studio content edits appear immediately without a deploy. Free hosting has quotas and cold starts.
+
+The studio username is `roton`. Sign in with the original password chosen when generating the hash. The hash belongs only in `ADMIN_PASSWORD_HASH`; it is not the login password. Email credentials are not portfolio credentials.
 
 ## Tests
 
